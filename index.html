@@ -85,15 +85,15 @@
             <h2 class="text-3xl font-bold text-slate-900 mb-2">2. Сводная таблица (Due Diligence)</h2>
             <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Интерактивный список проанализированных спортсменов. Используйте фильтры для поиска оптимальных кандидатов под ивент или амбассадорство.</p>
 
-            <div class="flex gap-4 mb-4">
-                <select id="filterVerdict" class="border border-slate-300 rounded p-2 text-sm" onchange="renderTable()">
+            <div class="flex flex-col gap-4 md:flex-row mb-4">
+                <select id="filterVerdict" class="w-full md:w-auto border border-slate-300 rounded p-2 text-sm" onchange="renderTable()">
                     <option value="all">Все вердикты</option>
                     <option value="брать амбассадором">Брать амбассадором</option>
                     <option value="только ивент">Только ивент</option>
                     <option value="резерв">Резерв</option>
                     <option value="не брать">Не брать (Risk)</option>
                 </select>
-                <select id="filterGeo" class="border border-slate-300 rounded p-2 text-sm" onchange="renderTable()">
+                <select id="filterGeo" class="w-full md:w-auto border border-slate-300 rounded p-2 text-sm" onchange="renderTable()">
                     <option value="all">Все гео</option>
                     <option value="UZ">Узбекистан (UZ)</option>
                     <option value="KZ">Казахстан (KZ)</option>

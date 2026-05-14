@@ -1,29 +1,354 @@
 const fightersData = [
-    { name: 'Амирхан "Белый Лев" Оев', instagram: 'https://www.instagram.com/0ev.amirkhan?igsh=NWY3ZjhudWxzMDV6', geo: 'RU', location: 'Россия, Грузия', media: 'Medium', uzRel: 2, hype: 3, risk: 'Yellow', tier: 'Low', verdict: 'резерв' },
-    { name: 'Леко Акопян', instagram: 'https://www.instagram.com/lendrush_x929xx?igsh=MWJnYXA0Znk1NXRiaA==', geo: 'RU', location: 'Россия, Армения', media: 'High', uzRel: 1, hype: 4, risk: 'Yellow', tier: 'Medium', verdict: 'только ивент' },
-    { name: 'Мухаммад Мокаев', instagram: 'https://www.instagram.com/mokaev_muhammad?igsh=enFkd2x6MGNuOGJp', geo: 'RU', location: 'Великобритания', media: 'Premium', uzRel: 3, hype: 4, risk: 'Green', tier: 'Premium', verdict: 'брать амбассадором' },
-    { name: 'Торнике "тока газ" Сванидзе', instagram: 'https://www.instagram.com/toka_svanidze?igsh=cnRpMzdyMGF1cmJl', geo: 'RU', location: 'Грузия, Россия', media: 'Medium', uzRel: 1, hype: 3, risk: 'Yellow', tier: 'Low', verdict: 'резерв' },
-    { name: 'Сулим Бисултанов', instagram: 'https://www.instagram.com/bisultanov_sulim?igsh=MWhxODBwczIzN2szdg==', geo: 'RU', location: 'Россия (Чечня)', media: 'Medium', uzRel: 1, hype: 3, risk: 'Yellow', tier: 'Low', verdict: 'только ивент' },
-    { name: 'Мераб Двалишвили', instagram: 'https://www.instagram.com/merab.dvalishvili?igsh=NjRvZXowOHpyYjU3', geo: 'RU', location: 'Грузия', media: 'Premium', uzRel: 2, hype: 5, risk: 'Green', tier: 'Premium', verdict: 'только ивент' },
-    { name: 'Шовхал Чурчаев', instagram: 'https://www.instagram.com/shovkhal_churchaev?igsh=N2k2bDNjZjZoNmUy', geo: 'RU', location: 'Россия (Чечня)', media: 'High', uzRel: 2, hype: 5, risk: 'Red', tier: 'High', verdict: 'не брать' },
-    { name: 'Адам Кипиш', instagram: 'https://www.instagram.com/adamkipish?igsh=bzIwZ2xyb251Ynpp', geo: 'KZ', location: 'Казахстан', media: 'Medium', uzRel: 3, hype: 3, risk: 'Yellow', tier: 'Low', verdict: 'резерв' },
-    { name: 'Ибрагим Никархо Исламов', instagram: 'https://www.instagram.com/nikarkho_?igsh=NnhqMHh5ZnF2ZHk=', geo: 'RU', location: 'Россия (Чечня)', media: 'Medium', uzRel: 1, hype: 4, risk: 'Red', tier: 'Low', verdict: 'не брать' },
-    { name: 'Еркебулан Токтар', instagram: 'https://www.instagram.com/erkebulan_toktar?igsh=emlobmt1bnFmdWEy', geo: 'KZ', location: 'Казахстан', media: 'High', uzRel: 4, hype: 5, risk: 'Green', tier: 'High', verdict: 'брать амбассадором' },
-    { name: 'Малик (абби) Ербутаев', instagram: 'https://www.instagram.com/abbi_01_01?igsh=MW1wNWV1N20ybG5wZw==', geo: 'UZ', location: 'Узбекистан', media: 'High', uzRel: 5, hype: 4, risk: 'Green', tier: 'Medium', verdict: 'брать амбассадором' },
-    { name: 'Нурланбек Уулу Марсель', instagram: 'https://www.instagram.com/nurlanbek_uulu_marsel?igsh=bHh5d253cGw1NjVz', geo: 'UZ', location: 'Кыргызстан', media: 'Medium', uzRel: 3, hype: 3, risk: 'Green', tier: 'Low', verdict: 'резерв' },
-    { name: 'Серик Сармухамед', instagram: 'https://www.instagram.com/sarmukhamedserik?igsh=bjl3bnFhY3kwOTc0', geo: 'KZ', location: 'Казахстан', media: 'Medium', uzRel: 3, hype: 3, risk: 'Green', tier: 'Low', verdict: 'только ивент' },
-    { name: 'Акранбек Ерасыл', instagram: 'https://www.instagram.com/akranbek.yerassyl?igsh=OGp6cnpudWZ5dzdz', geo: 'KZ', location: 'Казахстан', media: 'Medium', uzRel: 3, hype: 3, risk: 'Green', tier: 'Low', verdict: 'только ивент' },
-    { name: 'Бобур Абдулазизов', instagram: 'https://www.instagram.com/bobur__abdulazizov?igsh=M3czY2Z1YTg0Zm03', geo: 'UZ', location: 'Узбекистан', media: 'High', uzRel: 5, hype: 4, risk: 'Green', tier: 'Medium', verdict: 'брать амбассадором' },
-    { name: 'Давид Хачатрян', instagram: 'https://www.instagram.com/davidxachatryan?igsh=d3E4ZTByN2RxZ25h', geo: 'RU', location: 'Армения, Россия', media: 'Medium', uzRel: 1, hype: 2, risk: 'Green', tier: 'Low', verdict: 'только ивент' },
-    { name: 'Сережа Арутюнян', instagram: 'https://www.instagram.com/seryozhaharutunyan?igsh=djdhM2RmNjZsYThs', geo: 'RU', location: 'Армения', media: 'Medium', uzRel: 1, hype: 2, risk: 'Green', tier: 'Low', verdict: 'только ивент' },
-    { name: 'Рустам "гангстер" Михарахимов', instagram: 'https://www.instagram.com/rustam_gangstern1?igsh=ZmJkenNpbmQ3NW1i', geo: 'UZ', location: 'Узбекистан', media: 'High', uzRel: 5, hype: 4, risk: 'Yellow', tier: 'Medium', verdict: 'брать амбассадором' },
-    { name: 'Мухаммад "Перс" Хейбати', instagram: 'https://www.instagram.com/pd_mma?igsh=eXU3cXNzNWVzbGNq', geo: 'RU', location: 'Россия (Дагестан)', media: 'High', uzRel: 2, hype: 5, risk: 'Red', tier: 'High', verdict: 'не брать' },
-    { name: 'Данияр Токтаров', instagram: 'https://www.instagram.com/danikk_o?igsh=emVjMTJqNjVnOHdn', geo: 'KZ', location: 'Казахстан', media: 'Medium', uzRel: 3, hype: 3, risk: 'Green', tier: 'Low', verdict: 'резерв' },
-    { name: 'Шарабутдин Магомедов', instagram: 'https://www.instagram.com/shara_bullet77?igsh=MTJiZTJqdzRzMmsxOA==', geo: 'RU', location: 'Россия (Дагестан)', media: 'Premium', uzRel: 4, hype: 5, risk: 'Green', tier: 'Premium', verdict: 'брать амбассадором' },
-    { name: 'Хумоюн Тухтамурадов', instagram: 'https://www.instagram.com/khumoyun_tukhtamuradov?igsh=cW56cjVidDRuZzQz', geo: 'UZ', location: 'Узбекистан', media: 'High', uzRel: 5, hype: 4, risk: 'Green', tier: 'Medium', verdict: 'брать амбассадором' },
-    { name: 'Сулейман палач', instagram: 'https://www.instagram.com/suleyman_palach?igsh=d2RuZ3gzbDVuODc4', geo: 'UZ', location: 'Таджикистан', media: 'Medium', uzRel: 4, hype: 3, risk: 'Green', tier: 'Low', verdict: 'резерв' },
-    { name: 'Бобурджон Исроилов', instagram: 'https://www.instagram.com/ispanchikk_?igsh=bDZqamRpZThxNGhv', geo: 'UZ', location: 'Узбекистан', media: 'Medium', uzRel: 5, hype: 3, risk: 'Green', tier: 'Low', verdict: 'только ивент' },
-    { name: 'Мухиддин Мамаджонов', instagram: 'https://www.instagram.com/muhiddin_mamajonov?igsh=MWV3Y2R1bDNlbjljNQ==', geo: 'UZ', location: 'Узбекистан', media: 'Medium', uzRel: 5, hype: 3, risk: 'Green', tier: 'Low', verdict: 'только ивент' }
+    {
+        name: "Амирхан Оев",
+        instagram: "https://www.instagram.com/0ev.amirkhan?igsh=NWY3ZjhudWxzMDV6",
+        geo: "RU",
+        location: "Россия, Грузия",
+        media: "Medium",
+        uzRel: 2,
+        hype: 3,
+        risk: "Yellow",
+        tier: "Low",
+        verdict: "резерв",
+        bio: "Яркий представитель поп-ММА сцены (Россия/Грузия).",
+        rationale: "Низкая релевантность для UZ и средний уровень хайпа; подходит только как резервный участник для создания конфликта на пресс-конференциях."
+    },
+    {
+        name: "Леко Акопян",
+        instagram: "https://www.instagram.com/lendrush_x929xx?igsh=MWJnYXA0Znk1NXRiaA==",
+        geo: "RU",
+        location: "Россия, Армения",
+        media: "High",
+        uzRel: 1,
+        hype: 4,
+        risk: "Yellow",
+        tier: "Medium",
+        verdict: "только ивент",
+        bio: "Опытный боец на голых кулаках с сильной медийкой в РФ.",
+        rationale: "Отличный генератор хайпа для ивента, но релевантность для UZ минимальна, амбассадорство нецелесообразно."
+    },
+    {
+        name: "Мухаммад Мокаев",
+        instagram: "https://www.instagram.com/mokaev_muhammad?igsh=enFkd2x6MGNuOGJp",
+        geo: "RU",
+        location: "Великобритания",
+        media: "Premium",
+        uzRel: 3,
+        hype: 4,
+        risk: "Green",
+        tier: "Premium",
+        verdict: "брать амбассадором",
+        bio: "Топовый боец наилегчайшего веса (Великобритания/Дагестан), экс-боец UFC.",
+        rationale: "Премиальный статус и отсутствие «грязных» скандалов делают его отличным амбассадором с прицелом на международную узнаваемость."
+    },
+    {
+        name: "Торнике Сванидзе",
+        instagram: "https://www.instagram.com/toka_svanidze?igsh=cnRpMzdyMGF1cmJl",
+        geo: "RU",
+        location: "Грузия, Россия",
+        media: "Medium",
+        uzRel: 1,
+        hype: 3,
+        risk: "Yellow",
+        tier: "Low",
+        verdict: "резерв",
+        bio: "Грузинский боец с опытом выступлений в российских медийных лигах.",
+        rationale: "Релевантность для UZ слабая, репутационные риски умеренные — использовать только в случае нехватки ростера."
+    },
+    {
+        name: "Сулим Бисултанов",
+        instagram: "https://www.instagram.com/bisultanov_sulim?igsh=MWhxODBwczIzN2szdg==",
+        geo: "RU",
+        location: "Россия (Чечня)",
+        media: "Medium",
+        uzRel: 1,
+        hype: 3,
+        risk: "Yellow",
+        tier: "Low",
+        verdict: "только ивент",
+        bio: "Российский боец, постоянный участник поп-ММА турниров.",
+        rationale: "Не имеет значимой фан-базы в Узбекистане, подходит исключительно для заполнения карда."
+    },
+    {
+        name: "Мераб Двалишвили",
+        instagram: "https://www.instagram.com/merab.dvalishvili?igsh=NjRvZXowOHpyYjU3",
+        geo: "RU",
+        location: "Грузия",
+        media: "Premium",
+        uzRel: 2,
+        hype: 5,
+        risk: "Green",
+        tier: "Premium",
+        verdict: "только ивент",
+        bio: "Чемпион UFC в легчайшем весе из Грузии.",
+        rationale: "Премиум-звезда мирового уровня; из-за высокой цены целесообразно привлекать только как VIP-гостя стадионного ивента."
+    },
+    {
+        name: "Шовхал Чурчаев",
+        instagram: "https://www.instagram.com/shovkhal_churchaev?igsh=N2k2bDNjZjZoNmUy",
+        geo: "RU",
+        location: "Россия (Чечня)",
+        media: "High",
+        uzRel: 2,
+        hype: 5,
+        risk: "Red",
+        tier: "High",
+        verdict: "не брать",
+        bio: "Скандально известный боец российского поп-ММА чеченского происхождения.",
+        rationale: "Абсолютный красный флаг: систематические срывы контрактов и драки вне октагона. Недопустимые риски для легального бренда."
+    },
+    {
+        name: "Адам Кипиш",
+        instagram: "https://www.instagram.com/adamkipish?igsh=bzIwZ2xyb251Ynpp",
+        geo: "KZ",
+        location: "Казахстан",
+        media: "Medium",
+        uzRel: 3,
+        hype: 3,
+        risk: "Yellow",
+        tier: "Low",
+        verdict: "резерв",
+        bio: "Медийный казахстанский боец.",
+        rationale: "Хорошая узнаваемость в KZ, но в UZ работает слабо. Резервный вариант для кросс-региональных боев."
+    },
+    {
+        name: "Ибрагим Исламов",
+        instagram: "https://www.instagram.com/nikarkho_?igsh=NnhqMHh5ZnF2ZHk=",
+        geo: "RU",
+        location: "Россия (Чечня)",
+        media: "Medium",
+        uzRel: 1,
+        hype: 4,
+        risk: "Red",
+        tier: "Low",
+        verdict: "не брать",
+        bio: "Звезда поп-ММА, вовлеченный в недавние криминальные инциденты.",
+        rationale: "Находился в розыске, имеет высокие криминальные риски. Прямая угроза compliance бренда, категорически исключить."
+    },
+    {
+        name: "Еркебулан Токтар",
+        instagram: "https://www.instagram.com/erkebulan_toktar?igsh=emlobmt1bnFmdWEy",
+        geo: "KZ",
+        location: "Казахстан",
+        media: "High",
+        uzRel: 4,
+        hype: 5,
+        risk: "Green",
+        tier: "High",
+        verdict: "брать амбассадором",
+        bio: "Суперзвезда казахстанского ММА и кино с огромной фан-базой.",
+        rationale: "Феноменальный охват, органично перетекающий в UZ. Идеальный кандидат на амбассадорство и съемки в креативах."
+    },
+    {
+        name: "Малик Ербутаев",
+        instagram: "https://www.instagram.com/abbi_01_01?igsh=MW1wNWV1N20ybG5wZw==",
+        geo: "UZ",
+        location: "Узбекистан",
+        media: "High",
+        uzRel: 5,
+        hype: 4,
+        risk: "Green",
+        tier: "Medium",
+        verdict: "брать амбассадором",
+        bio: "Топовый узбекский боец ММА с позитивным публичным имиджем.",
+        rationale: "Максимальная локальная релевантность (5/5), отсутствие скандалов и преданная аудитория — выбор №1 для рынка Узбекистана."
+    },
+    {
+        name: "Нурланбек Уулу Марсель",
+        instagram: "https://www.instagram.com/nurlanbek_uulu_marsel?igsh=bHh5d253cGw1NjVz",
+        geo: "UZ",
+        location: "Кыргызстан",
+        media: "Medium",
+        uzRel: 3,
+        hype: 3,
+        risk: "Green",
+        tier: "Low",
+        verdict: "резерв",
+        bio: "Известный боец из Кыргызстана.",
+        rationale: "Хороший потенциал на Среднюю Азию, но для фокусного UZ-рынка пока рассматривается только как резерв."
+    },
+    {
+        name: "Серик Сармухамед",
+        instagram: "https://www.instagram.com/sarmukhamedserik?igsh=bjl3bnFhY3kwOTc0",
+        geo: "KZ",
+        location: "Казахстан",
+        media: "Medium",
+        uzRel: 3,
+        hype: 3,
+        risk: "Green",
+        tier: "Low",
+        verdict: "только ивент",
+        bio: "Крепкий казахстанский спортсмен.",
+        rationale: "Подходит для укрепления сетки боев турнира, но имеет недостаточный медийный вес для лица бренда."
+    },
+    {
+        name: "Акранбек Ерасыл",
+        instagram: "https://www.instagram.com/akranbek.yerassyl?igsh=OGp6cnpudWZ5dzdz",
+        geo: "KZ",
+        location: "Казахстан",
+        media: "Medium",
+        uzRel: 3,
+        hype: 3,
+        risk: "Green",
+        tier: "Low",
+        verdict: "только ивент",
+        bio: "Казахстанский боец смешанных единоборств.",
+        rationale: "Аналогично предыдущему: хороший спортивный уровень, но слабая медийка для маркетинговых интеграций в UZ."
+    },
+    {
+        name: "Бобур Абдулазизов",
+        instagram: "https://www.instagram.com/bobur__abdulazizov?igsh=M3czY2Z1YTg0Zm03",
+        geo: "UZ",
+        location: "Узбекистан",
+        media: "High",
+        uzRel: 5,
+        hype: 4,
+        risk: "Green",
+        tier: "Medium",
+        verdict: "брать амбассадором",
+        bio: "Восходящая звезда ММА Узбекистана.",
+        rationale: "Один из главных активов для локального UZ-маркета; отличный engagement rate, безопасно брать для наружной рекламы и digital."
+    },
+    {
+        name: "Давид Хачатрян",
+        instagram: "https://www.instagram.com/davidxachatryan?igsh=d3E4ZTByN2RxZ25h",
+        geo: "RU",
+        location: "Армения, Россия",
+        media: "Medium",
+        uzRel: 1,
+        hype: 2,
+        risk: "Green",
+        tier: "Low",
+        verdict: "только ивент",
+        bio: "Ветеран армянского и российского ММА.",
+        rationale: "Аудитория не пересекается с целевой UZ-группой, низкий уровень хайпа в данном гео. Только как спортивная составляющая ивента."
+    },
+    {
+        name: "Сережа Арутюнян",
+        instagram: "https://www.instagram.com/seryozhaharutunyan?igsh=djdhM2RmNjZsYThs",
+        geo: "RU",
+        location: "Армения",
+        media: "Medium",
+        uzRel: 1,
+        hype: 2,
+        risk: "Green",
+        tier: "Low",
+        verdict: "только ивент",
+        bio: "Медийный боец поп-ММА.",
+        rationale: "Локален для РФ/Кавказа, не несет коммерческой ценности для амбассадорства в Средней Азии."
+    },
+    {
+        name: "Рустам Михарахимов",
+        instagram: "https://www.instagram.com/rustam_gangstern1?igsh=ZmJkenNpbmQ3NW1i",
+        geo: "UZ",
+        location: "Узбекистан",
+        media: "High",
+        uzRel: 5,
+        hype: 4,
+        risk: "Yellow",
+        tier: "Medium",
+        verdict: "брать амбассадором",
+        bio: "Популярный узбекский боец, умеющий создавать шоу и трэш-ток.",
+        rationale: "Отлично конвертирует хайп в просмотры. Сильный актив для амбассадорства, но требует контроля и строгого NDA из-за стиля поведения."
+    },
+    {
+        name: "Мухаммад Хейбати",
+        instagram: "https://www.instagram.com/pd_mma?igsh=eXU3cXNzNWVzbGNq",
+        geo: "RU",
+        location: "Россия (Дагестан)",
+        media: "High",
+        uzRel: 2,
+        hype: 5,
+        risk: "Red",
+        tier: "High",
+        verdict: "не брать",
+        bio: "Один из самых скандальных бойцов СНГ («Персидский Дагестанец").",
+        rationale: "Токсичный трэш-ток с переходом на личности и религии. Высочайший риск отторжения у консервативной UZ-аудитории."
+    },
+    {
+        name: "Данияр Токтаров",
+        instagram: "https://www.instagram.com/danikk_o?igsh=emVjMTJqNjVnOHdn",
+        geo: "KZ",
+        location: "Казахстан",
+        media: "Medium",
+        uzRel: 3,
+        hype: 3,
+        risk: "Green",
+        tier: "Low",
+        verdict: "резерв",
+        bio: "Представитель казахстанской школы единоборств.",
+        rationale: "Средние показатели охватов; держать в резерве для региональных противостояний (UZ vs KZ)."
+    },
+    {
+        name: "Шарабутдин Магомедов",
+        instagram: "https://www.instagram.com/shara_bullet77?igsh=MTJiZTJqdzRzMmsxOA==",
+        geo: "RU",
+        location: "Россия (Дагестан)",
+        media: "Premium",
+        uzRel: 4,
+        hype: 5,
+        risk: "Green",
+        tier: "Premium",
+        verdict: "брать амбассадором",
+        bio: "Харизматичный непобежденный боец UFC («Шара Буллет").",
+        rationale: "Глобальный охват СНГ и исламского мира. Идеальный премиум-амбассадор для придания проекту международного статуса."
+    },
+    {
+        name: "Хумоюн Тухтамурадов",
+        instagram: "https://www.instagram.com/khumoyun_tukhtamuradov?igsh=cW56cjVidDRuZzQz",
+        geo: "UZ",
+        location: "Узбекистан",
+        media: "High",
+        uzRel: 5,
+        hype: 4,
+        risk: "Green",
+        tier: "Medium",
+        verdict: "брать амбассадором",
+        bio: "Один из флагманов узбекского ММА с качественной аудиторией.",
+        rationale: "Локальный топ. Прекрасное соотношение цены, охвата и безопасности, однозначно брать амбассадором."
+    },
+    {
+        name: "Сулейман палач",
+        instagram: "https://www.instagram.com/suleyman_palach?igsh=d2RuZ3gzbDVuODc4",
+        geo: "UZ",
+        location: "Таджикистан",
+        media: "Medium",
+        uzRel: 4,
+        hype: 3,
+        risk: "Green",
+        tier: "Low",
+        verdict: "резерв",
+        bio: "Жесткий боец из Таджикистана.",
+        rationale: "Соседнее гео, понятный язык боев, но для эксклюзива на UZ не дотягивает. Оставляем в резерве."
+    },
+    {
+        name: "Бобурджон Исроилов",
+        instagram: "https://www.instagram.com/ispanchikk_?igsh=bDZqamRpZThxNGhv",
+        geo: "UZ",
+        location: "Узбекистан",
+        media: "Medium",
+        uzRel: 5,
+        hype: 3,
+        risk: "Green",
+        tier: "Low",
+        verdict: "только ивент",
+        bio: "Локальный узбекский проспект.",
+        rationale: "Релевантность есть, но не хватает медийного веса для сольных рекламных кампаний. Использовать внутри карда турнира."
+    },
+    {
+        name: "Мухиддин Мамаджонов",
+        instagram: "https://www.instagram.com/muhiddin_mamajonov?igsh=MWV3Y2R1bDNlbjljNQ==",
+        geo: "UZ",
+        location: "Узбекистан",
+        media: "Medium",
+        uzRel: 5,
+        hype: 3,
+        risk: "Green",
+        tier: "Low",
+        verdict: "только ивент",
+        bio: "Узбекский спортсмен с фокусом на спортивные результаты.",
+        rationale: "Безопасный профиль, но низкий медийный хайп. Подходит как локальный участник турнира для разогрева публики."
+    }
 ];
 
 const topCandidatesData = [
@@ -146,6 +471,67 @@ function changeSort(key) {
     renderTable();
 }
 
+let tooltipElement = null;
+
+function createTooltipElement() {
+    if (tooltipElement) return tooltipElement;
+    tooltipElement = document.createElement('div');
+    tooltipElement.className = 'tooltip-card hidden';
+    tooltipElement.style.position = 'absolute';
+    tooltipElement.style.zIndex = '60';
+    tooltipElement.style.maxWidth = '320px';
+    tooltipElement.style.pointerEvents = 'none';
+    tooltipElement.style.opacity = '0';
+    tooltipElement.style.transition = 'opacity 0.15s ease';
+    document.body.appendChild(tooltipElement);
+    return tooltipElement;
+}
+
+function showTooltip(event, fighter) {
+    const tooltip = createTooltipElement();
+    tooltip.innerHTML = `
+        <div class="tooltip-title">${fighter.name}</div>
+        <div class="tooltip-bio">${fighter.bio}</div>
+        <div class="tooltip-rationale">${fighter.rationale}</div>
+    `;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const top = window.scrollY + rect.top;
+    const left = rect.right + 12;
+    tooltip.style.top = `${top}px`;
+    tooltip.style.left = `${left}px`;
+    tooltip.classList.remove('hidden');
+    tooltip.style.opacity = '1';
+    adjustTooltipPosition(rect);
+}
+
+function hideTooltip() {
+    if (!tooltipElement) return;
+    tooltipElement.classList.add('hidden');
+    tooltipElement.style.opacity = '0';
+}
+
+function moveTooltip(event) {
+    if (!tooltipElement || tooltipElement.classList.contains('hidden')) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const top = window.scrollY + rect.top;
+    const left = rect.right + 12;
+    tooltipElement.style.top = `${top}px`;
+    tooltipElement.style.left = `${left}px`;
+    adjustTooltipPosition(rect);
+}
+
+function adjustTooltipPosition(targetRect) {
+    const tooltip = tooltipElement;
+    if (!tooltip) return;
+    const bounds = tooltip.getBoundingClientRect();
+    if (bounds.right > window.innerWidth - 12) {
+        tooltip.style.left = `${Math.max(12, targetRect.left - bounds.width - 12)}px`;
+    }
+    if (bounds.bottom > window.innerHeight - 12) {
+        tooltip.style.top = `${window.scrollY + Math.max(12, targetRect.bottom - bounds.height - 12)}px`;
+    }
+}
+
 function setSortIndicators() {
     document.querySelectorAll('.sort-indicator').forEach(el => el.textContent = '');
     if (!currentSortKey) return;
@@ -194,6 +580,9 @@ function renderTable() {
             <td class="p-4 border-b">${fighter.tier}</td>
             <td class="p-4 border-b">${fighter.verdict}</td>
         `;
+        tr.addEventListener('mouseenter', event => showTooltip(event, fighter));
+        tr.addEventListener('mouseleave', hideTooltip);
+        tr.addEventListener('mousemove', moveTooltip);
         tbody.appendChild(tr);
     });
     setSortIndicators();
