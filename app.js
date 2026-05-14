@@ -594,6 +594,12 @@ function compareValues(a, b, key) {
     if (key === 'media' || key === 'risk' || key === 'tier' || key === 'verdict') {
         return (sortOrders[key][a[key]] || 0) - (sortOrders[key][b[key]] || 0);
     }
+    if (key === 'followers') {
+        return parseFollowerValue(a.followers) - parseFollowerValue(b.followers);
+    }
+    if (key === 'reach') {
+        return parseReachValue(a.reach) - parseReachValue(b.reach);
+    }
     return a[key] - b[key];
 }
 
@@ -676,6 +682,58 @@ function setSortIndicators() {
     if (target) target.textContent = indicator;
 }
 
+function formatNumberWithSuffix(value) {
+    if (typeof value !== 'number' || Number.isNaN(value)) return value;
+    if (value >= 1000000) {
+        return `${(value / 1000000).toFixed(3).replace(/\.0+$/, '')}M+`;
+    }
+    if (value >= 1000) {
+        return `${(value / 1000).toFixed(1).replace(/\.0+$/, '')}K+`;
+    }
+    return value.toString();
+}
+
+function parseFollowerValue(value) {
+    if (!value) return 0;
+    const normalized = value.replace(/\s+/g, '').replace(/\+/g, '').replace(/,/, '.').toLowerCase();
+    if (normalized.endsWith('m')) {
+        return parseFloat(normalized) * 1000000;
+    }
+    if (normalized.endsWith('k')) {
+        return parseFloat(normalized) * 1000;
+    }
+    return parseFloat(normalized) || 0;
+}
+
+function parseReachValue(value) {
+    if (!value) return 0;
+    const normalized = value.replace(/\s+/g, '').replace(/\+/g, '').replace(/~/g, '').replace(/,/, '.').toLowerCase();
+    if (normalized.endsWith('m')) {
+        return parseFloat(normalized) * 1000000;
+    }
+    if (normalized.endsWith('k')) {
+        return parseFloat(normalized) * 1000;
+    }
+    return parseFloat(normalized) || 0;
+}
+
+function updateTableSummary(filteredData) {
+    const count = filteredData.length;
+    const totalFollowers = filteredData.reduce((sum, fighter) => sum + parseFollowerValue(fighter.followers), 0);
+    const totalReach = filteredData.reduce((sum, fighter) => sum + parseReachValue(fighter.reach), 0);
+
+    const formattedFollowers = formatNumberWithSuffix(totalFollowers);
+    const formattedReach = formatNumberWithSuffix(totalReach);
+
+    const countEl = document.getElementById('summaryCount');
+    const followersEl = document.getElementById('summaryFollowers');
+    const reachEl = document.getElementById('summaryReach');
+
+    if (countEl) countEl.textContent = count;
+    if (followersEl) followersEl.textContent = formattedFollowers;
+    if (reachEl) reachEl.textContent = formattedReach;
+}
+
 function renderTable() {
     const tbody = document.getElementById('tableBody');
     const filterVerdict = document.getElementById('filterVerdict').value;
@@ -690,9 +748,11 @@ function renderTable() {
     }
 
     tbody.innerHTML = '';
+    const visibleFighters = [];
     data.forEach(fighter => {
         if (filterVerdict !== 'all' && fighter.verdict !== filterVerdict) return;
         if (filterGeo !== 'all' && fighter.geo !== filterGeo) return;
+        visibleFighters.push(fighter);
         const riskColor = fighter.risk === 'Green' ? 'bg-green-100 text-green-800' : fighter.risk === 'Yellow' ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800';
         const tr = document.createElement('tr');
         tr.className = 'hover:bg-slate-50 transition-colors';
@@ -706,7 +766,6 @@ function renderTable() {
             <td class="p-4 border-b text-slate-500">${fighter.geo}</td>
             <td class="p-4 border-b font-medium text-slate-900">${fighter.followers || '—'}</td>
             <td class="p-4 border-b text-slate-500">${fighter.reach || '—'}</td>
-            <td class="p-4 border-b text-slate-500">${fighter.source || '—'}</td>
             <td class="p-4 border-b">
                 <div class="flex items-center">
                     <span class="mr-2">${fighter.uzRel}</span>
@@ -723,6 +782,7 @@ function renderTable() {
         tr.addEventListener('mousemove', moveTooltip);
         tbody.appendChild(tr);
     });
+    updateTableSummary(visibleFighters);
     setSortIndicators();
 }
 
@@ -807,8 +867,8 @@ function renderMediaAnalytics() {
                         <span>${item.er}</span>
                     </div>
                     <div class="flex justify-between items-center rounded-xl bg-slate-50 p-3 border border-slate-100">
-                        <span class="font-semibold">Тип контента</span>
-                        <span>${item.contentType}</span>
+                        <span class="font-semibold">Охват</span>
+                        <span>${item.reach || '—'}</span>
                     </div>
                 </div>
             </div>

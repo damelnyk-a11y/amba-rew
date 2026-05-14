@@ -27,7 +27,7 @@
             <button type="button" onclick="switchTab('summary')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors bg-blue-600 text-white font-medium" data-target="summary">📊 1. Exec Summary</button>
             <button type="button" onclick="switchTab('matrix')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="matrix">🗄️ 2. Сводная таблица</button>
             <button type="button" onclick="switchTab('candidates')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="candidates">✅ 3. Топ-кандидаты UZ</button>
-            <button type="button" onclick="switchTab('analytics')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="analytics">📈 4. Медийная аналитика</button>
+            <button type="button" onclick="switchTab('analytics')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="analytics">📈 4. Медийка</button>
             <button type="button" onclick="switchTab('risks')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="risks">🛑 5. Red Flag</button>
             <button type="button" onclick="switchTab('mechanics')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="mechanics">⚙️ 6. Механика</button>
             <button type="button" onclick="switchTab('verdict')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="verdict">🎯 7. Вердикт</button>
@@ -102,6 +102,10 @@
                 </select>
             </div>
 
+            <div class="mb-4 rounded-3xl bg-slate-100 border border-slate-200 p-4 text-sm text-slate-700">
+                <div class="font-medium text-slate-900">Итого: <span id="summaryCount">25</span> бойцов · IG followers: <span id="summaryFollowers">17.912M+</span> · Reach: <span id="summaryReach">~6.48M+</span></div>
+            </div>
+
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                 <div class="overflow-x-auto table-scroll">
                     <table class="w-full text-left text-sm whitespace-nowrap">
@@ -109,9 +113,8 @@
                                             <tr>
                                 <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('name')">Боец <span id="sort-name" class="sort-indicator"></span></button></th>
                                 <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('geo')">Гео <span id="sort-geo" class="sort-indicator"></span></button></th>
-                        <th class="p-4 border-b">Followers (IG)</th>
-                        <th class="p-4 border-b">Охват (Reach)</th>
-                        <th class="p-4 border-b">Источник</th>
+                        <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('followers')">Followers (IG) <span id="sort-followers" class="sort-indicator"></span></button></th>
+                        <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('reach')">Охват (Reach) <span id="sort-reach" class="sort-indicator"></span></button></th>
                         <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('uzRel')">UZ-релевант (1-5) <span id="sort-uzRel" class="sort-indicator"></span></button></th>
                                 <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('hype')">Хайп (1-5) <span id="sort-hype" class="sort-indicator"></span></button></th>
                                 <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('risk')">Риск <span id="sort-risk" class="sort-indicator"></span></button></th>
@@ -145,8 +148,8 @@
 
         <!-- SECTION 4: MEDIA ANALYTICS -->
         <section id="analytics" class="tab-content max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-slate-900 mb-2">4. Медийная аналитика кандидатов</h2>
-            <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Быстрый доступ к ключевым медийным метрикам и сегментированной аналитике по амбассадорам и другим позициям.</p>
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">4. Медийка</h2>
+            <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Быстрый доступ к ключевым медийным метрикам по амбассадорам и другим позициям.</p>
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6" id="analyticsCards">
                 <!-- Injected via JS -->
             </div>
