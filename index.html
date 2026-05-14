@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Due Diligence & Marketing Report: MMA Fighters for UZ-Geo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Chosen Palette: Warm Corporate Neutrals (Slate, Zinc, Soft Blue accents) -->
+    <!-- Application Structure Plan: A tabbed dashboard interface. This structure is chosen to condense a 3-page management report into a single view without overwhelming the user. The sidebar allows instant switching between the Executive Summary, the Data Matrix (interactive table), Top Candidates/Risks, and Legal/Mechanics. This facilitates quick decision-making for a CMO/CEO by separating high-level summaries from deep-dive tabular data. -->
+    <!-- Visualization & Content Choices: 
+         1. Risk Distribution (Doughnut Chart): Goal: Show pool safety. Justification: Quickly visualizes how many fighters are unusable due to compliance risks. Method: Chart.js.
+         2. Hype vs UZ-Relevance (Bar Chart): Goal: Compare top candidates. Justification: Maps the two most critical metrics for ambassador selection. Method: Chart.js.
+         3. Interactive Data Table: Goal: Organize all 25 fighters. Justification: Allows sorting/filtering by verdict and risk, essential for due diligence. Method: HTML/JS.
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Chart Container Strict Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
+        }
+
+        /* Custom scrollbar for table */
+        .table-scroll::-webkit-scrollbar { height: 8px; width: 8px; }
+        .table-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+        .table-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .table-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden text-slate-800">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col h-full shadow-xl z-10 flex-shrink-0">
+        <div class="p-6">
+            <h1 class="text-xl font-bold text-white leading-tight">UZ Sports Marketing<br><span class="text-blue-400 text-sm">Due Diligence Report</span></h1>
+            <p class="text-xs mt-2 text-slate-500">CONFIDENTIAL | 2026</p>
+        </div>
+        <nav class="flex-1 px-4 space-y-2 overflow-y-auto">
+            <button onclick="switchTab('summary')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors bg-blue-600 text-white font-medium" data-target="summary">📊 1. Exec Summary</button>
+            <button onclick="switchTab('matrix')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="matrix">🗄️ 2. Сводная таблица</button>
+            <button onclick="switchTab('candidates')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="candidates">✅ 3. Топ-кандидаты UZ</button>
+            <button onclick="switchTab('risks')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="risks">🛑 4. Красные флаги</button>
+            <button onclick="switchTab('mechanics')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="mechanics">⚙️ 5. Механика</button>
+            <button onclick="switchTab('legal')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="legal">⚖️ 6. Договор & Комплаенс</button>
+            <button onclick="switchTab('verdict')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="verdict">🎯 7. Вердикт</button>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 bg-slate-50 overflow-y-auto p-8 relative">
+        
+        <!-- SECTION 1: EXECUTIVE SUMMARY -->
+        <section id="summary" class="tab-content active max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">1. Executive Summary</h2>
+            <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Выжимка анализа пула из 25 бойцов для оценки коммерческой привлекательности и репутационных рисков при работе с аудиторией Узбекистана.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-lg mb-4">Основные выводы</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm">
+                        <li>Пул из 25 бойцов крайне неоднороден. Большинство RU/Caucasus поп-ММА бойцов <b>не имеют ценности для UZ</b> и несут высокие репутационные риски.</li>
+                        <li>Для UZ-кампании оптимальна локальная связка (Узбекистан + Казахстан для масштаба).</li>
+                        <li><b>Telegram-потенциал</b> в UZ высокий, но требует strict compliance (маркировка рекламы, запрет на прямые betting-ссылки без NDA/прокладок).</li>
+                        <li>Главный риск проекта: неконтролируемое поведение бойцов (трэш-ток, драки вне ринга), бьющее по репутации бренда.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-lg mb-4">Ключевые списки</h3>
+                    <div class="mb-3">
+                        <span class="text-xs font-bold uppercase text-slate-400">Топ-5 кандидатов (UZ/CA):</span>
+                        <p class="text-sm font-medium mt-1">1. Малик Ербутаев, 2. Бобур Абдулазизов, 3. Хумоюн Тухтамурадов, 4. Еркебулан Токтар (KZ), 5. Шара Буллет (RU/Global).</p>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase text-slate-400">Критичные риски (Не брать):</span>
+                        <p class="text-sm font-medium mt-1 text-red-600">Шовхал Чурчаев, Ибрагим Исламов, Мухаммад Хейбати.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-center font-bold text-sm text-slate-500 uppercase tracking-wider mb-4">Распределение рисков по пулу</h3>
+                    <div class="chart-container">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-center font-bold text-sm text-slate-500 uppercase tracking-wider mb-4">Хайп vs UZ-Релевантность (Топ)</h3>
+                    <div class="chart-container">
+                        <canvas id="hypeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: MATRIX -->
+        <section id="matrix" class="tab-content max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">2. Сводная таблица (Due Diligence)</h2>
+            <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Интерактивный список проанализированных спортсменов. Используйте фильтры для поиска оптимальных кандидатов под ивент или амбассадорство.</p>
+
+            <div class="flex gap-4 mb-4">
+                <select id="filterVerdict" class="border border-slate-300 rounded p-2 text-sm" onchange="renderTable()">
+                    <option value="all">Все вердикты</option>
+                    <option value="брать амбассадором">Брать амбассадором</option>
+                    <option value="только ивент">Только ивент</option>
+                    <option value="резерв">Резерв</option>
+                    <option value="не брать">Не брать (Risk)</option>
+                </select>
+                <select id="filterGeo" class="border border-slate-300 rounded p-2 text-sm" onchange="renderTable()">
+                    <option value="all">Все гео</option>
+                    <option value="UZ">Узбекистан (UZ)</option>
+                    <option value="KZ">Казахстан (KZ)</option>
+                    <option value="RU">Россия / Кавказ</option>
+                </select>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="overflow-x-auto table-scroll">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead class="bg-slate-100 text-slate-600 font-medium">
+                            <tr>
+                                <th class="p-4 border-b">Боец</th>
+                                <th class="p-4 border-b">Гео</th>
+                                <th class="p-4 border-b">Медийность</th>
+                                <th class="p-4 border-b">UZ-релевант (1-5)</th>
+                                <th class="p-4 border-b">Хайп (1-5)</th>
+                                <th class="p-4 border-b">Риск</th>
+                                <th class="p-4 border-b">Tier / Цена</th>
+                                <th class="p-4 border-b">Вердикт</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody" class="divide-y divide-slate-100">
+                            <!-- Injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: TOP CANDIDATES -->
+        <section id="candidates" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">3. Топ-кандидаты для амбассадорства в UZ</h2>
+            <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Подробный разбор бойцов, рекомендованных к подписанию в качестве лиц бренда. Оценка строится на балансе охвата, локальной узнаваемости и безопасности.</p>
+
+            <div class="space-y-4" id="topCandidatesList">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 4: RED FLAGS -->
+        <section id="risks" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">4. Красные флаги / Кого исключить</h2>
+            <p class="text-slate-600 mb-6 border-l-4 border-red-500 pl-4">Анализ репутационных и юридических рисков. Нижеперечисленные лица категорически не рекомендуются для ассоциации с брендом.</p>
+
+            <div class="grid grid-cols-1 gap-4" id="redFlagsList">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 5: MECHANICS -->
+        <section id="mechanics" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">5. Интеграционная механика</h2>
+            <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Два сценария реализации проекта в зависимости от бюджета и толерантности к риску.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-slate-700">
+                    <h3 class="text-xl font-bold mb-3">A) "Подвал" (Камерный хайп-ивент)</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><b>Кто подходит:</b> Tier 2/3 (Р. Михарахимов, Б. Исроилов, А. Кипиш). Бойцы с конфликтом.</li>
+                        <li><b>Формат контента:</b> Треш-ток конференции, face-to-face (YouTube), короткие агрессивные Reels.</li>
+                        <li><b>Пост-релиз:</b> Нарезки нокаутов, закулисье "без купюр" в Telegram-каналах бойцов.</li>
+                        <li><b>NDA/Эмбарго:</b> Строгое эмбарго на спойлеры результатов боев до выхода видео на YouTube. Штраф 100% гонорара.</li>
+                        <li><b>Права:</b> 100% прав на эксклюзивный стриминг, вырезку шортсов для performance-маркетинга.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-600">
+                    <h3 class="text-xl font-bold mb-3">B) "Стадион" (Большой ивент)</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><b>Кто подходит:</b> Tier 1/Premium (Шара Буллет, Еркебулан Токтар, Малик Ербутаев).</li>
+                        <li><b>Headline:</b> Международный бой (UZ vs Global).</li>
+                        <li><b>TG/IG охваты:</b> Запуск конкурса/розыгрыша билетов совместно с бойцами (repost-механика).</li>
+                        <li><b>Линия на ивент:</b> Открытие линии у букмекера. Бои должны быть sanctioning (официальные), минимизация риска "договорняков" за счет высоких гонораров за победу (win bonus).</li>
+                        <li><b>Материалы:</b> Профессиональные промо-ролики, открытые тренировки, пресс-подходы, документальный фильм о подготовке (Vlog-style).</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-slate-100 p-6 rounded-xl">
+                <h4 class="font-bold mb-2">📈 Примеры кейсов на рынке:</h4>
+                <p class="text-sm">Pop-MMA лиги (Hardcore, Наше Дело) активно интегрируют беттинг (Olimpbet, Winline). <b>Эффект:</b> дешевая стоимость инсталла (CPI) за счет лояльной, азартной ЦА. <b>Риски:</b> блокировки YouTube-каналов за прямую рекламу казино/беттинга (необходима интеграция через промо-коды или нативные вставки, а не прямые ссылки). Кейс Melbet в СНГ показывал эффективность performance-нарезок (Reels с ударом + всплывающий бонус).</p>
+            </div>
+        </section>
+
+        <!-- SECTION 6: LEGAL -->
+        <section id="legal" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">6. Что забрать в договоре (Комплаенс)</h2>
+            <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Обязательные юридические пункты для защиты бренда и обеспечения маркетингового ROI.</p>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-slate-800 border-b pb-2 mb-3">Права и Контент</h3>
+                        <ul class="list-none space-y-2 text-sm">
+                            <li>✅ <b>Права на образ:</b> Использование имени, никнейма, татуировок, голоса сроком на 1 год после ивента.</li>
+                            <li>✅ <b>Производные:</b> Право на создание и дистрибуцию фото/видео с турнира, backstage, Reels/TikTok/Shorts.</li>
+                            <li>✅ <b>Performance:</b> Разрешение на использование образа в таргетированной рекламе (Facebook, Instagram) на территорию UZ/KZ/СНГ.</li>
+                            <li>✅ <b>Анонсы:</b> Минимум 2 поста и 4 Stories до боя, 1 пост после (с маркировкой).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 border-b pb-2 mb-3">Ограничения и Штрафы</h3>
+                        <ul class="list-none space-y-2 text-sm">
+                            <li>🔒 <b>NDA / Эмбарго:</b> Полный запрет на публикацию результатов до официального релиза (штраф).</li>
+                            <li>🚫 <b>Non-Compete:</b> Запрет на рекламу конкурентов (другие БК, энергетики - в зависимости от спонсора) за 1 мес. до и 3 мес. после ивента.</li>
+                            <li>⚠️ <b>Моральный пункт (Morals Clause):</b> Право расторгнуть контракт без выплат при уголовном преследовании, дискриминационных высказываниях.</li>
+                            <li>⚖️ <b>Маркировка:</b> Обязательство бойца размещать токен/маркировку рекламы согласно местному законодательству (Узбекистан).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: VERDICT -->
+        <section id="verdict" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">7. Финальный вердикт</h2>
+            <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Итоговое распределение бюджета и стратегии запуска.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <h4 class="font-bold text-green-800 text-lg">Tier 1</h4>
+                    <p class="text-xs text-green-700 mb-2">Брать в 1-ю очередь (Амбассадоры)</p>
+                    <ul class="text-sm font-medium"><li>Малик Ербутаев</li><li>Бобур Абдулазизов</li><li>Шара Буллет (если бюджет)</li></ul>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                    <h4 class="font-bold text-blue-800 text-lg">Tier 2</h4>
+                    <p class="text-xs text-blue-700 mb-2">Хорошая цена/качество</p>
+                    <ul class="text-sm font-medium"><li>Хумоюн Тухтамурадов</li><li>Рустам Михарахимов</li><li>Еркебулан Токтар</li></ul>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
+                    <h4 class="font-bold text-yellow-800 text-lg">Tier 3</h4>
+                    <p class="text-xs text-yellow-700 mb-2">Только участники ивента</p>
+                    <ul class="text-sm font-medium"><li>Серик Сармухамед</li><li>Бобурджон Исроилов</li><li>Давид Хачатрян</li></ul>
+                </div>
+                <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+                    <h4 class="font-bold text-red-800 text-lg">Exclude</h4>
+                    <p class="text-xs text-red-700 mb-2">Блок-лист (Риск)</p>
+                    <ul class="text-sm font-medium"><li>Шовхал Чурчаев</li><li>Ибрагим Исламов</li><li>Мухаммад Хейбати</li></ul>
+                </div>
+            </div>
+
+            <div class="bg-slate-800 text-white p-6 rounded-xl">
+                <h3 class="font-bold text-lg mb-4 text-blue-300">Стратегическое Резюме</h3>
+                <div class="space-y-4 text-sm">
+                    <p>🔥 <b>Самая сильная связка для UZ:</b> Шара Буллет (как хедлайнер для престижа, дает СНГ охват) + Малик Ербутаев & Бобур Абдулазизов (для глубокого локального UZ-проникновения).</p>
+                    <p>🛡️ <b>Самый безопасный сценарий запуска:</b> Подписание исключительно Tier 1 & Tier 2 UZ/KZ бойцов. Формат "Стадион" (спортивная составляющая выше трэш-тока). Строгий комплаенс, заранее записанные креативы, минимум импровизации в live-трансляциях.</p>
+                    <p>🧨 <b>Хайповый, но рискованный сценарий:</b> Завезти RU/Pop-MMA бойцов (Акопян, Оев) против локальных UZ звезд. Даст огромный резонанс на YouTube, но риск срыва боя, драк на пресс-конференции и негатива со стороны консервативной части UZ-аудитории оценивается как высокий.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Data Store
+        const fightersData = [
+            { name: "Амирхан Оев", geo: "RU", media: "Medium", uzRel: 2, hype: 3, risk: "Yellow", tier: "Low", verdict: "резерв" },
+            { name: "Леко Акопян", geo: "RU", media: "High", uzRel: 1, hype: 4, risk: "Yellow", tier: "Medium", verdict: "только ивент" },
+            { name: "Мухаммад Мокаев", geo: "RU", media: "Premium", uzRel: 3, hype: 4, risk: "Green", tier: "Premium", verdict: "брать амбассадором" },
+            { name: "Торнике Сванидзе", geo: "RU", media: "Medium", uzRel: 1, hype: 3, risk: "Yellow", tier: "Low", verdict: "резерв" },
+            { name: "Сулим Бисултанов", geo: "RU", media: "Medium", uzRel: 1, hype: 3, risk: "Yellow", tier: "Low", verdict: "только ивент" },
+            { name: "Мераб Двалишвили", geo: "RU", media: "Premium", uzRel: 2, hype: 5, risk: "Green", tier: "Premium", verdict: "только ивент" },
+            { name: "Шовхал Чурчаев", geo: "RU", media: "High", uzRel: 2, hype: 5, risk: "Red", tier: "High", verdict: "не брать" },
+            { name: "Адам Кипиш", geo: "KZ", media: "Medium", uzRel: 3, hype: 3, risk: "Yellow", tier: "Low", verdict: "резерв" },
+            { name: "Ибрагим Исламов", geo: "RU", media: "Medium", uzRel: 1, hype: 4, risk: "Red", tier: "Low", verdict: "не брать" },
+            { name: "Еркебулан Токтар", geo: "KZ", media: "High", uzRel: 4, hype: 5, risk: "Green", tier: "High", verdict: "брать амбассадором" },
+            { name: "Малик Ербутаев", geo: "UZ", media: "High", uzRel: 5, hype: 4, risk: "Green", tier: "Medium", verdict: "брать амбассадором" },
+            { name: "Нурланбек Уулу Марсель", geo: "UZ", media: "Medium", uzRel: 3, hype: 3, risk: "Green", tier: "Low", verdict: "резерв" },
+            { name: "Серик Сармухамед", geo: "KZ", media: "Medium", uzRel: 3, hype: 3, risk: "Green", tier: "Low", verdict: "только ивент" },
+            { name: "Акранбек Ерасыл", geo: "KZ", media: "Medium", uzRel: 3, hype: 3, risk: "Green", tier: "Low", verdict: "только ивент" },
+            { name: "Бобур Абдулазизов", geo: "UZ", media: "High", uzRel: 5, hype: 4, risk: "Green", tier: "Medium", verdict: "брать амбассадором" },
+            { name: "Давид Хачатрян", geo: "RU", media: "Medium", uzRel: 1, hype: 2, risk: "Green", tier: "Low", verdict: "только ивент" },
+            { name: "Сережа Арутюнян", geo: "RU", media: "Medium", uzRel: 1, hype: 2, risk: "Green", tier: "Low", verdict: "только ивент" },
+            { name: "Рустам Михарахимов", geo: "UZ", media: "High", uzRel: 5, hype: 4, risk: "Yellow", tier: "Medium", verdict: "брать амбассадором" },
+            { name: "Мухаммад Хейбати", geo: "RU", media: "High", uzRel: 2, hype: 5, risk: "Red", tier: "High", verdict: "не брать" },
+            { name: "Данияр Токтаров", geo: "KZ", media: "Medium", uzRel: 3, hype: 3, risk: "Green", tier: "Low", verdict: "резерв" },
+            { name: "Шарабутдин Магомедов", geo: "RU", media: "Premium", uzRel: 4, hype: 5, risk: "Green", tier: "Premium", verdict: "брать амбассадором" },
+            { name: "Хумоюн Тухтамурадов", geo: "UZ", media: "High", uzRel: 5, hype: 4, risk: "Green", tier: "Medium", verdict: "брать амбассадором" },
+            { name: "Сулейман Палач", geo: "UZ", media: "Medium", uzRel: 4, hype: 3, risk: "Green", tier: "Low", verdict: "резерв" },
+            { name: "Бобурджон Исроилов", geo: "UZ", media: "Medium", uzRel: 5, hype: 3, risk: "Green", tier: "Low", verdict: "только ивент" },
+            { name: "Мухиддин Мамаджонов", geo: "UZ", media: "Medium", uzRel: 5, hype: 3, risk: "Green", tier: "Low", verdict: "только ивент" }
+        ];
+
+        const topCandidatesData = [
+            { name: "Малик Ербутаев", reason: "Топовая узнаваемость в UZ. Активная аудитория, позитивный имидж.", format: "Лицо кампании, спецвыпуски на YT, интеграция в Reels.", req: "Эксклюзив на беттинг в UZ, 3 поста/мес.", tier: "Medium ($$-$$$)", risk: "Низкий. Возможна перегрузка рекламой в аккаунте." },
+            { name: "Бобур Абдулазизов", reason: "Локальная звезда, отличный engagement rate.", format: "Участие в ивенте (главный кард), промо-активности в Ташкенте.", req: "Права на образ для наружки в UZ.", tier: "Medium ($$-$$$)", risk: "Низкий." },
+            { name: "Еркебулан Токтар", reason: "Феноменальный хайп в KZ с органичным переливом в UZ. Отличный актер (кино), идеален для креативов.", format: "Хедлайнер, съемка в постановочном промо-ролике.", req: "Telegram-анонсы, кросс-постинг.", tier: "High ($$$)", risk: "Фокус смещен на KZ, требует локализации креативов под UZ." },
+            { name: "Шара Буллет", reason: "Глобальная звезда (UFC). Огромный авторитет в СНГ и Азии.", format: "Special Guest, Амбассадор верхнего уровня.", req: "Право на использование образа в digital (СНГ).", tier: "Premium ($$$$)", risk: "Сложности с графиком UFC, высокая цена." },
+            { name: "Рустам 'Гангстер' Михарахимов", reason: "Аудитория любит треш-ток и шоу. Дает отличные просмотры.", format: "Участник медийной конференции, провокатор инфоповодов.", req: "NDA на спойлеры, штрафы за срыв.", tier: "Medium ($$)", risk: "Желтый флаг: возможны локальные конфликты (требует контроля)." }
+        ];
+
+        const redFlagsData = [
+            { name: "Шовхал Чурчаев", fact: "Многочисленные срывы боев, массовые драки (кейс с Hardcore Stadium), невыход на вес.", src: "Публичные релизы лиг, видео на YT.", risk: "Катастрофический риск срыва ивента и ассоциации бренда с хулиганством.", action: "Полностью исключить." },
+            { name: "Ибрагим 'Никархо' Исламов", fact: "Криминальные инциденты (ДТП в Москве, розыск).", src: "Новостные сводки (Telegram-каналы).", risk: "Неприемлемо для compliance любого легального бренда (особенно betting).", action: "Полностью исключить." },
+            { name: "Мухаммад 'Перс' Хейбати", fact: "Жесткий трэш-ток, переходящий границы религий и национальностей. Конфликты с топ-бойцами вне октагона.", src: "Интервью, посты в IG.", risk: "Токсичность может отпугнуть лояльную мусульманскую аудиторию в UZ.", action: "Исключить из амбассадорства (возможно только как гость/боец при жестком контракте, но лучше избежать)." }
+        ];
+
+        // Navigation Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-blue-600', 'text-white', 'font-medium');
+                el.classList.add('hover:bg-slate-800');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = document.querySelector(`[data-target="${tabId}"]`);
+            activeBtn.classList.add('bg-blue-600', 'text-white', 'font-medium');
+            activeBtn.classList.remove('hover:bg-slate-800');
+
+            // Trigger chart render if summary tab is opened
+            if (tabId === 'summary') {
+                initCharts();
+            }
+        }
+
+        // Table Render Logic
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            const filterVerdict = document.getElementById('filterVerdict').value;
+            const filterGeo = document.getElementById('filterGeo').value;
+            
+            tbody.innerHTML = '';
+            
+            fightersData.forEach(fighter => {
+                // Filtering logic
+                if (filterVerdict !== 'all' && fighter.verdict !== filterVerdict) return;
+                if (filterGeo !== 'all' && fighter.geo !== filterGeo && !(filterGeo === 'UZ' && fighter.geo === 'UZ')) return; // Simplified geo logic
+                
+                const riskColor = fighter.risk === 'Green' ? 'bg-green-100 text-green-800' : 
+                                  fighter.risk === 'Yellow' ? 'bg-yellow-100 text-yellow-800' : 
+                                  'bg-red-100 text-red-800';
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition-colors';
+                tr.innerHTML = `
+                    <td class="p-4 border-b font-medium">${fighter.name}</td>
+                    <td class="p-4 border-b text-slate-500">${fighter.geo}</td>
+                    <td class="p-4 border-b">${fighter.media}</td>
+                    <td class="p-4 border-b">
+                        <div class="flex items-center">
+                            <span class="mr-2">${fighter.uzRel}</span>
+                            <div class="w-16 h-2 bg-slate-200 rounded-full"><div class="h-full bg-blue-500 rounded-full" style="width: ${fighter.uzRel * 20}%"></div></div>
+                        </div>
+                    </td>
+                    <td class="p-4 border-b">${fighter.hype}/5</td>
+                    <td class="p-4 border-b"><span class="px-2 py-1 rounded text-xs font-semibold ${riskColor}">${fighter.risk}</span></td>
+                    <td class="p-4 border-b">${fighter.tier}</td>
+                    <td class="p-4 border-b">${fighter.verdict}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Render Lists
+        function renderLists() {
+            const topList = document.getElementById('topCandidatesList');
+            topCandidatesData.forEach(c => {
+                topList.innerHTML += `
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-4">
+                        <div class="md:w-1/4 font-bold text-lg text-slate-800">${c.name}</div>
+                        <div class="md:w-3/4 space-y-2 text-sm text-slate-700">
+                            <p><b>Почему:</b> ${c.reason}</p>
+                            <p><b>Формат:</b> ${c.format}</p>
+                            <p><b>Пакет:</b> ${c.req}</p>
+                            <p><b>Оценка/Tier:</b> <span class="font-semibold">${c.tier}</span></p>
+                            <p class="text-amber-600"><b>Риск:</b> ${c.risk}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const redList = document.getElementById('redFlagsList');
+            redFlagsData.forEach(r => {
+                redList.innerHTML += `
+                    <div class="bg-red-50 p-5 rounded-xl shadow-sm border border-red-200 flex flex-col md:flex-row gap-4">
+                        <div class="md:w-1/4 font-bold text-lg text-red-900">${r.name}</div>
+                        <div class="md:w-3/4 space-y-2 text-sm text-red-800">
+                            <p><b>Факт/Риск:</b> ${r.fact}</p>
+                            <p><b>Источник:</b> <span class="text-xs uppercase bg-red-100 px-1 rounded">${r.src}</span></p>
+                            <p><b>Угроза:</b> ${r.risk}</p>
+                            <p class="font-bold border-t border-red-200 pt-2 mt-2">Решение: ${r.action}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Charts Initialization
+        let riskChartInst, hypeChartInst;
+        function initCharts() {
+            // Risk Chart Data
+            const riskCounts = { Green: 0, Yellow: 0, Red: 0 };
+            fightersData.forEach(f => riskCounts[f.risk]++);
+
+            const ctxRisk = document.getElementById('riskChart').getContext('2d');
+            if(riskChartInst) riskChartInst.destroy();
+            riskChartInst = new Chart(ctxRisk, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Низкий (Green)', 'Средний (Yellow)', 'Критичный (Red)'],
+                    datasets: [{
+                        data: [riskCounts.Green, riskCounts.Yellow, riskCounts.Red],
+                        backgroundColor: ['#22c55e', '#eab308', '#ef4444'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { 
+                    responsive: true, 
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } } },
+                    cutout: '70%'
+                }
+            });
+
+            // Hype Chart Data (Top 7 by Hype/UZ Rel)
+            const topFighters = fightersData
+                .filter(f => f.verdict === 'брать амбассадором' || f.name === 'Еркебулан Токтар' || f.name === 'Рустам Михарахимов')
+                .slice(0, 6);
+                
+            const ctxHype = document.getElementById('hypeChart').getContext('2d');
+            if(hypeChartInst) hypeChartInst.destroy();
+            hypeChartInst = new Chart(ctxHype, {
+                type: 'bar',
+                data: {
+                    labels: topFighters.map(f => f.name.split(' ')[0]),
+                    datasets: [
+                        {
+                            label: 'Хайп',
+                            data: topFighters.map(f => f.hype),
+                            backgroundColor: '#3b82f6',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'UZ-Релевантность',
+                            data: topFighters.map(f => f.uzRel),
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, max: 5, ticks: { stepSize: 1 } }
+                    },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTable();
+            renderLists();
+            initCharts();
+        });
+
+    </script>
+</body>
+</html>
