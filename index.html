@@ -24,12 +24,13 @@
             <p class="text-xs mt-2 text-slate-500">CONFIDENTIAL | 2026</p>
         </div>
         <nav class="flex-1 px-4 space-y-2 overflow-y-auto">
-            <button onclick="switchTab('summary')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors bg-blue-600 text-white font-medium" data-target="summary">📊 1. Exec Summary</button>
-            <button onclick="switchTab('matrix')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="matrix">🗄️ 2. Сводная таблица</button>
-            <button onclick="switchTab('candidates')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="candidates">✅ 3. Топ-кандидаты UZ</button>
-            <button onclick="switchTab('risks')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="risks">🛑 4. Red Flag</button>
-            <button onclick="switchTab('mechanics')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="mechanics">⚙️ 5. Механика</button>
-            <button onclick="switchTab('verdict')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="verdict">🎯 6. Вердикт</button>
+            <button type="button" onclick="switchTab('summary')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors bg-blue-600 text-white font-medium" data-target="summary">📊 1. Exec Summary</button>
+            <button type="button" onclick="switchTab('matrix')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="matrix">🗄️ 2. Сводная таблица</button>
+            <button type="button" onclick="switchTab('candidates')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="candidates">✅ 3. Топ-кандидаты UZ</button>
+            <button type="button" onclick="switchTab('analytics')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="analytics">📈 4. Медийная аналитика</button>
+            <button type="button" onclick="switchTab('risks')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="risks">🛑 5. Red Flag</button>
+            <button type="button" onclick="switchTab('mechanics')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="mechanics">⚙️ 6. Механика</button>
+            <button type="button" onclick="switchTab('verdict')" class="tab-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-slate-800" data-target="verdict">🎯 7. Вердикт</button>
         </nav>
     </aside>
 
@@ -108,8 +109,10 @@
                                             <tr>
                                 <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('name')">Боец <span id="sort-name" class="sort-indicator"></span></button></th>
                                 <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('geo')">Гео <span id="sort-geo" class="sort-indicator"></span></button></th>
-                                <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('media')">Медийность <span id="sort-media" class="sort-indicator"></span></button></th>
-                                <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('uzRel')">UZ-релевант (1-5) <span id="sort-uzRel" class="sort-indicator"></span></button></th>
+                        <th class="p-4 border-b">Followers (IG)</th>
+                        <th class="p-4 border-b">Охват (Reach)</th>
+                        <th class="p-4 border-b">Источник</th>
+                        <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('uzRel')">UZ-релевант (1-5) <span id="sort-uzRel" class="sort-indicator"></span></button></th>
                                 <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('hype')">Хайп (1-5) <span id="sort-hype" class="sort-indicator"></span></button></th>
                                 <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('risk')">Риск <span id="sort-risk" class="sort-indicator"></span></button></th>
                                 <th class="p-4 border-b"><button class="sort-button" onclick="changeSort('tier')">Tier <span id="sort-tier" class="sort-indicator"></span></button></th>
@@ -121,6 +124,13 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="bg-slate-50 p-4 border-t border-slate-200 text-xs text-slate-500">
+                    <p class="font-semibold mb-2">Легенда</p>
+                    <div class="grid gap-3 md:grid-cols-2">
+                        <div><span class="font-semibold">UZ-релевант (1-5):</span> степень соответствия аудитории Узбекистану и маркетинговому посылу бренда.</div>
+                        <div><span class="font-semibold">Хайп (1-5):</span> активность и вовлеченность аудитории бойца в краткосрочной digital-кампании.</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -128,40 +138,24 @@
         <section id="candidates" class="tab-content max-w-5xl mx-auto">
             <h2 class="text-3xl font-bold text-slate-900 mb-2">3. Топ-кандидаты для амбассадорства в UZ</h2>
             <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Подробный разбор бойцов, рекомендованных к подписанию в качестве лиц бренда. Оценка строится на балансе охвата, локальной узнаваемости и безопасности.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-700">
-                    <strong>Почему эти бойцы:</strong>
-                    <ul class="list-disc pl-5 mt-2 space-y-2">
-                        <li>Сильный локальный резонанс в UZ/KZ;</li>
-                        <li>Относительно низкие репутационные риски;</li>
-                        <li>Сбалансированные возможности для digital- и event-активации.</li>
-                    </ul>
-                </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-700">
-                    <strong>Формат предложения:</strong>
-                    <ul class="list-disc pl-5 mt-2 space-y-2">
-                        <li>Амбассадорство + спецконтент;</li>
-                        <li>Прямые Reels/TikTok + Telegram-анонсы;</li>
-                        <li>Выбор между «локальным» и «региональным» позиционированием.</li>
-                    </ul>
-                </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-700">
-                    <strong>Ключевые метрики:</strong>
-                    <ul class="list-disc pl-5 mt-2 space-y-2">
-                        <li>UZ-релевантность 4-5;</li>
-                        <li>Хайп 3-5;</li>
-                        <li>Риск не выше Yellow для амбассадорства.</li>
-                    </ul>
-                </div>
-            </div>
             <div class="space-y-4" id="topCandidatesList">
                 <!-- Injected via JS -->
             </div>
         </section>
 
-        <!-- SECTION 4: RED FLAG -->
+        <!-- SECTION 4: MEDIA ANALYTICS -->
+        <section id="analytics" class="tab-content max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">4. Медийная аналитика кандидатов</h2>
+            <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Быстрый доступ к ключевым медийным метрикам и сегментированной аналитике по амбассадорам и другим позициям.</p>
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6" id="analyticsCards">
+                <!-- Injected via JS -->
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="analyticsGroups"></div>
+        </section>
+
+        <!-- SECTION 5: RED FLAG -->
         <section id="risks" class="tab-content max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold text-slate-900 mb-2">4. Red Flag / Кого исключить</h2>
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">5. Red Flag / Кого исключить</h2>
             <p class="text-slate-600 mb-6 border-l-4 border-red-500 pl-4">Анализ репутационных и юридических рисков. Нижеперечисленные лица категорически не рекомендуются для ассоциации с брендом.</p>
 
             <div class="grid grid-cols-1 gap-4" id="redFlagsList">
@@ -169,9 +163,9 @@
             </div>
         </section>
 
-        <!-- SECTION 5: MECHANICS -->
+        <!-- SECTION 6: MECHANICS -->
         <section id="mechanics" class="tab-content max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold text-slate-900 mb-2">5. Интеграционная механика</h2>
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">6. Интеграционная механика</h2>
             <p class="text-slate-600 mb-6 border-l-4 border-blue-500 pl-4">Два сценария реализации проекта в зависимости от бюджета и толерантности к риску.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -199,7 +193,7 @@
             </div>
             
             <div class="mt-8 bg-slate-100 p-6 rounded-xl">
-                <h4 class="font-bold mb-2">📈 Примеры кейсов на рынке:</h4>
+                <h4 class="font-bold mb-2">📈 Примеры кейсов конкурентов:</h4>
                 <p class="text-sm">Pop-MMA лиги (Hardcore, Наше Дело) активно интегрируют беттинг (Olimpbet, Winline). <b>Эффект:</b> дешевая стоимость инсталла (CPI) за счет лояльной, азартной ЦА. <b>Риски:</b> блокировки YouTube-каналов за прямую рекламу казино/беттинга (необходима интеграция через промо-коды или нативные вставки, а не прямые ссылки). Кейс Melbet в СНГ показывал эффективность performance-нарезок (Reels с ударом + всплывающий бонус).</p>
             </div>
         </section>

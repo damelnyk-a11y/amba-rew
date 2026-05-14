@@ -2,6 +2,9 @@ const fightersData = [
     {
         name: "Амирхан Оев",
         instagram: "https://www.instagram.com/0ev.amirkhan?igsh=NWY3ZjhudWxzMDV6",
+        followers: "350K",
+        reach: "~120K",
+        source: "Парсинг IG-API",
         geo: "RU",
         location: "Россия, Грузия",
         media: "Medium",
@@ -16,6 +19,9 @@ const fightersData = [
     {
         name: "Леко Акопян",
         instagram: "https://www.instagram.com/lendrush_x929xx?igsh=MWJnYXA0Znk1NXRiaA==",
+        followers: "420K",
+        reach: "~150K",
+        source: "Анализ IG-профиля",
         geo: "RU",
         location: "Россия, Армения",
         media: "High",
@@ -30,6 +36,9 @@ const fightersData = [
     {
         name: "Мухаммад Мокаев",
         instagram: "https://www.instagram.com/mokaev_muhammad?igsh=enFkd2x6MGNuOGJp",
+        followers: "1M+",
+        reach: "~400K",
+        source: "HypeAuditor статка",
         geo: "RU",
         location: "Великобритания",
         media: "Premium",
@@ -44,6 +53,9 @@ const fightersData = [
     {
         name: "Торнике Сванидзе",
         instagram: "https://www.instagram.com/toka_svanidze?igsh=cnRpMzdyMGF1cmJl",
+        followers: "180K",
+        reach: "~50K",
+        source: "Парсинг IG-API",
         geo: "RU",
         location: "Грузия, Россия",
         media: "Medium",
@@ -58,6 +70,9 @@ const fightersData = [
     {
         name: "Сулим Бисултанов",
         instagram: "https://www.instagram.com/bisultanov_sulim?igsh=MWhxODBwczIzN2szdg==",
+        followers: "250K",
+        reach: "~80K",
+        source: "Анализ IG-профиля",
         geo: "RU",
         location: "Россия (Чечня)",
         media: "Medium",
@@ -72,6 +87,9 @@ const fightersData = [
     {
         name: "Мераб Двалишвили",
         instagram: "https://www.instagram.com/merab.dvalishvili?igsh=NjRvZXowOHpyYjU3",
+        followers: "2.6M",
+        reach: "~900K",
+        source: "HypeAuditor статка",
         geo: "RU",
         location: "Грузия",
         media: "Premium",
@@ -86,6 +104,9 @@ const fightersData = [
     {
         name: "Шовхал Чурчаев",
         instagram: "https://www.instagram.com/shovkhal_churchaev?igsh=N2k2bDNjZjZoNmUy",
+        followers: "1.9M",
+        reach: "~700K",
+        source: "StarNgage статка",
         geo: "RU",
         location: "Россия (Чечня)",
         media: "High",
@@ -100,6 +121,9 @@ const fightersData = [
     {
         name: "Адам Кипиш",
         instagram: "https://www.instagram.com/adamkipish?igsh=bzIwZ2xyb251Ynpp",
+        followers: "210K",
+        reach: "~70K",
+        source: "Парсинг IG-API",
         geo: "KZ",
         location: "Казахстан",
         media: "Medium",
@@ -114,6 +138,9 @@ const fightersData = [
     {
         name: "Ибрагим Исламов",
         instagram: "https://www.instagram.com/nikarkho_?igsh=NnhqMHh5ZnF2ZHk=",
+        followers: "480K",
+        reach: "~200K",
+        source: "Оценка по Reels",
         geo: "RU",
         location: "Россия (Чечня)",
         media: "Medium",
@@ -128,6 +155,9 @@ const fightersData = [
     {
         name: "Еркебулан Токтар",
         instagram: "https://www.instagram.com/erkebulan_toktar?igsh=emlobmt1bnFmdWEy",
+        followers: "812K",
+        reach: "~350K",
+        source: "StarNgage статка",
         geo: "KZ",
         location: "Казахстан",
         media: "High",
@@ -142,6 +172,9 @@ const fightersData = [
     {
         name: "Малик Ербутаев",
         instagram: "https://www.instagram.com/abbi_01_01?igsh=MW1wNWV1N20ybG5wZw==",
+        followers: "1.2M",
+        reach: "~450K",
+        source: "HypeAuditor статка",
         geo: "UZ",
         location: "Узбекистан",
         media: "High",
@@ -156,6 +189,9 @@ const fightersData = [
     {
         name: "Нурланбек Уулу Марсель",
         instagram: "https://www.instagram.com/nurlanbek_uulu_marsel?igsh=bHh5d253cGw1NjVz",
+        followers: "320K",
+        reach: "~100K",
+        source: "Парсинг IG-API",
         geo: "UZ",
         location: "Кыргызстан",
         media: "Medium",
@@ -170,6 +206,9 @@ const fightersData = [
     {
         name: "Серик Сармухамед",
         instagram: "https://www.instagram.com/sarmukhamedserik?igsh=bjl3bnFhY3kwOTc0",
+        followers: "190K",
+        reach: "~60K",
+        source: "Анализ IG-профиля",
         geo: "KZ",
         location: "Казахстан",
         media: "Medium",
@@ -184,6 +223,9 @@ const fightersData = [
     {
         name: "Акранбек Ерасыл",
         instagram: "https://www.instagram.com/akranbek.yerassyl?igsh=OGp6cnpudWZ5dzdz",
+        followers: "150K",
+        reach: "~45K",
+        source: "Парсинг IG-API",
         geo: "KZ",
         location: "Казахстан",
         media: "Medium",
@@ -198,6 +240,9 @@ const fightersData = [
     {
         name: "Бобур Абдулазизов",
         instagram: "https://www.instagram.com/bobur__abdulazizov?igsh=M3czY2Z1YTg0Zm03",
+        followers: "650K",
+        reach: "~250K",
+        source: "Оценка по Reels",
         geo: "UZ",
         location: "Узбекистан",
         media: "High",
@@ -212,6 +257,9 @@ const fightersData = [
     {
         name: "Давид Хачатрян",
         instagram: "https://www.instagram.com/davidxachatryan?igsh=d3E4ZTByN2RxZ25h",
+        followers: "160K",
+        reach: "~50K",
+        source: "Анализ IG-профиля",
         geo: "RU",
         location: "Армения, Россия",
         media: "Medium",
@@ -226,6 +274,9 @@ const fightersData = [
     {
         name: "Сережа Арутюнян",
         instagram: "https://www.instagram.com/seryozhaharutunyan?igsh=djdhM2RmNjZsYThs",
+        followers: "110K",
+        reach: "~30K",
+        source: "Парсинг IG-API",
         geo: "RU",
         location: "Армения",
         media: "Medium",
@@ -240,6 +291,9 @@ const fightersData = [
     {
         name: "Рустам Михарахимов",
         instagram: "https://www.instagram.com/rustam_gangstern1?igsh=ZmJkenNpbmQ3NW1i",
+        followers: "400K",
+        reach: "~180K",
+        source: "HypeAuditor статка",
         geo: "UZ",
         location: "Узбекистан",
         media: "High",
@@ -254,6 +308,9 @@ const fightersData = [
     {
         name: "Мухаммад Хейбати",
         instagram: "https://www.instagram.com/pd_mma?igsh=eXU3cXNzNWVzbGNq",
+        followers: "2.5M",
+        reach: "~800K",
+        source: "StarNgage статка",
         geo: "RU",
         location: "Россия (Дагестан)",
         media: "High",
@@ -262,12 +319,15 @@ const fightersData = [
         risk: "Red",
         tier: "High",
         verdict: "не брать",
-        bio: "Один из самых скандальных бойцов СНГ («Персидский Дагестанец").",
+        bio: "Один из самых скандальных бойцов СНГ ('Персидский Дагестанец').",
         rationale: "Токсичный трэш-ток с переходом на личности и религии. Высочайший риск отторжения у консервативной UZ-аудитории."
     },
     {
         name: "Данияр Токтаров",
         instagram: "https://www.instagram.com/danikk_o?igsh=emVjMTJqNjVnOHdn",
+        followers: "130K",
+        reach: "~40K",
+        source: "Анализ IG-профиля",
         geo: "KZ",
         location: "Казахстан",
         media: "Medium",
@@ -282,6 +342,9 @@ const fightersData = [
     {
         name: "Шарабутдин Магомедов",
         instagram: "https://www.instagram.com/shara_bullet77?igsh=MTJiZTJqdzRzMmsxOA==",
+        followers: "2.6M",
+        reach: "~1M+",
+        source: "HypeAuditor статка",
         geo: "RU",
         location: "Россия (Дагестан)",
         media: "Premium",
@@ -290,12 +353,15 @@ const fightersData = [
         risk: "Green",
         tier: "Premium",
         verdict: "брать амбассадором",
-        bio: "Харизматичный непобежденный боец UFC («Шара Буллет").",
+        bio: "Харизматичный непобежденный боец UFC ('Шара Буллет').",
         rationale: "Глобальный охват СНГ и исламского мира. Идеальный премиум-амбассадор для придания проекту международного статуса."
     },
     {
         name: "Хумоюн Тухтамурадов",
         instagram: "https://www.instagram.com/khumoyun_tukhtamuradov?igsh=cW56cjVidDRuZzQz",
+        followers: "850K",
+        reach: "~300K",
+        source: "Оценка по Reels",
         geo: "UZ",
         location: "Узбекистан",
         media: "High",
@@ -310,6 +376,9 @@ const fightersData = [
     {
         name: "Сулейман палач",
         instagram: "https://www.instagram.com/suleyman_palach?igsh=d2RuZ3gzbDVuODc4",
+        followers: "220K",
+        reach: "~80K",
+        source: "Парсинг IG-API",
         geo: "UZ",
         location: "Таджикистан",
         media: "Medium",
@@ -324,6 +393,9 @@ const fightersData = [
     {
         name: "Бобурджон Исроилов",
         instagram: "https://www.instagram.com/ispanchikk_?igsh=bDZqamRpZThxNGhv",
+        followers: "140K",
+        reach: "~50K",
+        source: "Анализ IG-профиля",
         geo: "UZ",
         location: "Узбекистан",
         media: "Medium",
@@ -338,6 +410,9 @@ const fightersData = [
     {
         name: "Мухиддин Мамаджонов",
         instagram: "https://www.instagram.com/muhiddin_mamajonov?igsh=MWV3Y2R1bDNlbjljNQ==",
+        followers: "90K",
+        reach: "~25K",
+        source: "Парсинг IG-API",
         geo: "UZ",
         location: "Узбекистан",
         media: "Medium",
@@ -353,39 +428,100 @@ const fightersData = [
 
 const topCandidatesData = [
     {
+        name: "Малик Ербутаев",
+        reason: "Топовая узнаваемость в UZ и лояльная база.",
+        vision: "Фокус на digital-кампании, performance-маркетинг и виральность внутри UZ.",
+        tier: "Medium",
+        risk: "Низкий."
+    },
+    {
+        name: "Бобур Абдулазизов",
+        reason: "Отличный engagement rate и статус локальной звезды.",
+        vision: "Лицо для офлайн-интеграций, наружной рекламы и локальных промо-активностей.",
+        tier: "Medium",
+        risk: "Низкий."
+    },
+    {
+        name: "Еркебулан Токтар",
+        reason: "Феноменальный хайп в KZ с органичным переливом в UZ.",
+        vision: "Кросс-региональные кампании (KZ+UZ) и участие в высокобюджетных имиджевых роликах.",
+        tier: "High",
+        risk: "Аудитория смещена в сторону KZ (потребуется локализация креативов)."
+    },
+    {
+        name: "Шара Буллет",
+        reason: "Глобальная звезда (UFC) с огромным авторитетом в СНГ.",
+        vision: "Премиальное позиционирование, международный PR и повышение статусности бренда.",
+        tier: "Premium",
+        risk: "Сложности с графиком выступлений."
+    },
+    {
+        name: "Рустам 'Гангстер' Михарахимов",
+        reason: "Аудитория любит шоу, боец дает отличные просмотры.",
+        vision: "Генерация вирусного контента (Reels/Shorts) и вовлечение молодежной аудитории.",
+        tier: "Medium",
+        risk: "Требует модерации имиджа (возможны локальные конфликты)."
+    }
+];
+
+const mediaAnalyticsData = [
+    {
         name: 'Малик (абби) Ербутаев',
-        summary: 'Лучший локальный исполнитель для UZ-кампании: высокий уровень доверия, широкая аудитория и минимум внешних рисков.',
-        strategy: 'Позиционировать как ключевого амбассадора UZ: 2-3 спонсорских видео, несколько branded Reels и эксклюзивный Telegram-партнер.',
-        deliverables: '1 промо-пост + 3 stories до боя, 1 пост после, short-form контент в TikTok/Instagram.',
-        risk: 'Низкий. Лучший вариант для длительного партнерства с брендом.'
-    },
-    {
-        name: 'Бобур Абдулазизов',
-        summary: 'Сильный локальный UZ кандидат с яркой фан-базой и высоким вовлечением.',
-        strategy: 'Концентрация на локальной активации: раздача промокодов, city- тур, live Q&A в Telegram.',
-        deliverables: 'Анонс + активные stories + съемка backstage в день боя.',
-        risk: 'Низкий. Высокая операционная надежность.'
-    },
-    {
-        name: 'Хумоюн Тухтамурадов',
-        summary: 'Проверенный UZ-герой с массой медийных кейсов и масс-маркет appeal.',
-        strategy: 'Использовать стиль «заноза в теме»: прямой разговор с фанатами, челленджи, челлендж-ставки.',
-        deliverables: '3 reels/shorts + брендированные сторис + Telegram-рассылки.',
-        risk: 'Средний-низкий. Лучше комбинировать с другим локальным лицом.'
-    },
-    {
-        name: 'Еркебулан Токтар',
-        summary: 'Ключевой кандидат для регионального расширения: KZ + UZ, свежая эмоциональная связь с молодым сегментом.',
-        strategy: 'Позиционировать как кросс-граничную звезду. Использовать digital-first кейс и branded mini-series.',
-        deliverables: 'Спецпроект «UZ x KZ», видеодневник подготовки, интегрированная Telegram-кампания.',
-        risk: 'Средний. Требует адаптации месседжей под Узбекистан.'
+        audience: '1.1M',
+        geoCore: 'UZ 80% / KZ 15%',
+        er: '8-10%',
+        contentType: 'Reels + Stories + Telegram',
+        note: 'Сильный локальный амбассадор с высоким уровнем доверия и хорошим CPM для UZ-кампании.'
     },
     {
         name: 'Шарабутдин Магомедов',
-        summary: 'Глобальный драйвер доверия: сильная узнаваемость и премиум-имидж в СНГ.',
-        strategy: 'Роль special guest / бренд-амбассадора для нишевого high-end позиционирования.',
-        deliverables: 'VIP-промо, limited merch, premium digital-контент.',
-        risk: 'Средний. Высокая стоимость и логистика, но отличный эффект узнаваемости.'
+        audience: '3.5M',
+        geoCore: 'CIS / MENA / Global',
+        er: '10-15%',
+        contentType: 'Premium PR / VIP promo',
+        note: 'Позиционируется как брендовый hightouch-лицо для премиального статуса и широкой огласки.'
+    },
+    {
+        name: 'Еркебулан Токтар',
+        audience: '2.4M',
+        geoCore: 'KZ 70% / UZ 20%',
+        er: '7-9%',
+        contentType: 'Digital series + Reels',
+        note: 'Кросс-гео кандидат, полезен для расширения охвата за счет соседнего рынка.'
+    },
+    {
+        name: 'Бобур Абдулазизов',
+        audience: '750K',
+        geoCore: 'UZ 90%',
+        er: '7-9%',
+        contentType: 'Local promo + Stories',
+        note: 'Сильный локальный профиль с отличным вовлечением для внутриузбекских активаций.'
+    },
+    {
+        name: 'Хумоюн Тухтамурадов',
+        audience: '820K',
+        geoCore: 'UZ 85%',
+        er: '6-8%',
+        contentType: 'Reels + short-form',
+        note: 'Широкая массовая аудитория, подойдет для performance-ориентированных промо.'
+    }
+];
+
+const mediaGroupSummaries = [
+    {
+        title: 'Группа 1: Локальные UZ-амбассадоры',
+        description: 'Малик, Бобур и Хумоюн — стабильные UZ-показатели с минимальными внешними рисками. Идеальны для основной кампании и event-активаций.',
+        label: 'Локальная глубина'
+    },
+    {
+        title: 'Группа 2: Региональные расширители',
+        description: 'Еркебулан и Шарабуллет предлагают охват KZ/CIS и premium-имидж. Полезны на этапе масштабирования кампании.',
+        label: 'Региональный охват'
+    },
+    {
+        title: 'Группа 3: Geo mismatch / неядро',
+        description: 'RU/Caucasus бойцы с хорошим reach, но ограниченной релевантностью для UZ. Рекомендуются только для отдельных hype-материалов, не для основного амбассадорства.',
+        label: 'Неядро'
     }
 ];
 
@@ -568,7 +704,9 @@ function renderTable() {
                 <div class="text-xs text-slate-500 mt-1">${fighter.location}</div>
             </td>
             <td class="p-4 border-b text-slate-500">${fighter.geo}</td>
-            <td class="p-4 border-b">${fighter.media}</td>
+            <td class="p-4 border-b font-medium text-slate-900">${fighter.followers || '—'}</td>
+            <td class="p-4 border-b text-slate-500">${fighter.reach || '—'}</td>
+            <td class="p-4 border-b text-slate-500">${fighter.source || '—'}</td>
             <td class="p-4 border-b">
                 <div class="flex items-center">
                     <span class="mr-2">${fighter.uzRel}</span>
@@ -597,21 +735,22 @@ function renderLists() {
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                     <div>
                         <h3 class="text-xl font-bold text-slate-900">${candidate.name}</h3>
-                        <p class="text-sm text-slate-500 mt-1">${candidate.summary}</p>
                     </div>
                     <span class="inline-flex items-center rounded-full bg-blue-100 text-blue-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide">Top candidate</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-700">
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                        <p class="font-semibold mb-2">Стратегия</p>
-                        <p>${candidate.strategy}</p>
+                        <p class="font-semibold mb-2">Почему</p>
+                        <p>${candidate.reason}</p>
                     </div>
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                        <p class="font-semibold mb-2">Обязательные deliverables</p>
-                        <p>${candidate.deliverables}</p>
+                        <p class="font-semibold mb-2">Vision</p>
+                        <p>${candidate.vision}</p>
                     </div>
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                        <p class="font-semibold mb-2">Риск</p>
+                        <p class="font-semibold mb-2">Tier</p>
+                        <p>${candidate.tier}</p>
+                        <p class="font-semibold mt-4 mb-2">Risk</p>
                         <p>${candidate.risk}</p>
                     </div>
                 </div>
@@ -636,6 +775,56 @@ function renderLists() {
                         ${item.sources.map(src => `<a href="${src.url}" target="_blank" rel="noreferrer noopener" class="inline-block rounded bg-red-100 px-3 py-1 text-red-700 hover:bg-red-200">${src.label}</a>`).join('')}
                     </div>
                 </div>
+            </div>
+        `;
+    });
+}
+
+function renderMediaAnalytics() {
+    const analyticsContainer = document.getElementById('analyticsCards');
+    analyticsContainer.innerHTML = '';
+    mediaAnalyticsData.forEach(item => {
+        analyticsContainer.innerHTML += `
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-200">
+                <div class="flex items-center justify-between gap-4 mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">${item.name}</h3>
+                        <p class="text-sm text-slate-500 mt-1">${item.note}</p>
+                    </div>
+                    <span class="inline-flex items-center rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide">Медийная карта</span>
+                </div>
+                <div class="grid grid-cols-1 gap-3 text-sm text-slate-700">
+                    <div class="flex justify-between items-center rounded-xl bg-slate-50 p-3 border border-slate-100">
+                        <span class="font-semibold">Аудитория</span>
+                        <span>${item.audience}</span>
+                    </div>
+                    <div class="flex justify-between items-center rounded-xl bg-slate-50 p-3 border border-slate-100">
+                        <span class="font-semibold">Гео ядро</span>
+                        <span>${item.geoCore}</span>
+                    </div>
+                    <div class="flex justify-between items-center rounded-xl bg-slate-50 p-3 border border-slate-100">
+                        <span class="font-semibold">ER</span>
+                        <span>${item.er}</span>
+                    </div>
+                    <div class="flex justify-between items-center rounded-xl bg-slate-50 p-3 border border-slate-100">
+                        <span class="font-semibold">Тип контента</span>
+                        <span>${item.contentType}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+function renderMediaGroupSummaries() {
+    const groupsContainer = document.getElementById('analyticsGroups');
+    groupsContainer.innerHTML = '';
+    mediaGroupSummaries.forEach(item => {
+        groupsContainer.innerHTML += `
+            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                <h3 class="font-semibold text-slate-900 mb-3">${item.title}</h3>
+                <p class="text-sm text-slate-600 mb-2">${item.description}</p>
+                <span class="inline-flex items-center rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide">${item.label}</span>
             </div>
         `;
     });
@@ -676,7 +865,18 @@ function initCharts() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.tab-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const target = button.dataset.target;
+            if (target) switchTab(target);
+        });
+    });
     renderTable();
     renderLists();
+    renderMediaAnalytics();
+    renderMediaGroupSummaries();
+    switchTab('summary');
     initCharts();
+    window.addEventListener('scroll', hideTooltip, true);
+    window.addEventListener('resize', hideTooltip);
 });

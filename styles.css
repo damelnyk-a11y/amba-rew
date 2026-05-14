@@ -16,7 +16,7 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e29
 .sort-indicator { transition: transform 0.2s ease; }
 .sort-active .sort-indicator { transform: rotate(180deg); }
 
-.tab-btn { transition: background-color 0.2s ease; }
+.tab-btn { transition: background-color 0.2s ease; cursor: pointer; }
 
 @media (max-width: 1024px) {
     body { flex-direction: column; height: auto; overflow: visible; }
